@@ -147,35 +147,44 @@
       </div>
 
       <div class="project-grid">
-        <article class="mini-card reveal">
-          <h3>Barber content</h3>
-          <p>Krátká videa, střih, atmosféra provozovny a obsah pro lokální značku.</p>
+        <article class="mini-card showcase-card reveal">
+          <div class="showcase-head">
+            <div>
+              <p class="tag">Barber · Car edits</p>
+              <h3>Showcase Reels</h3>
+              <p>Výběr krátkých videí — atmosféra, barva, zvuk a střih naladěný na hudbu a pohyb.</p>
+            </div>
+            <span class="showcase-count">04 reels</span>
+          </div>
 
           <div class="mini-reels">
-            <button class="mini-reel video-thumb tilt-card" data-group="barber" data-index="0" style="--poster:url('assets/barber-thumb-01.jpg')" data-cursor="play"><video src="assets/barber-reel-01.mp4" poster="assets/barber-thumb-01.jpg" muted playsinline preload="metadata"></video><span class="thumb-play">▶</span></button>
-            <button class="mini-reel video-thumb tilt-card" data-group="barber" data-index="1" style="--poster:url('assets/barber-thumb-02.jpg')" data-cursor="play"><video src="assets/barber-reel-02.mp4" poster="assets/barber-thumb-02.jpg" muted playsinline preload="metadata"></video><span class="thumb-play">▶</span></button>
-            <button class="mini-reel video-thumb tilt-card" data-group="barber" data-index="2" style="--poster:url('assets/barber-thumb-03.jpg')" data-cursor="play"><video src="assets/roman_reel_4.mp4" poster="assets/barber-thumb-03.jpg" muted playsinline preload="metadata"></video><span class="thumb-play">▶</span></button>
+            <button class="mini-reel video-thumb tilt-card" data-group="showcase" data-index="0" style="--poster:url('assets/barber-thumb-01.jpg')" data-cursor="play" aria-label="Přehrát Barber reel"><video src="assets/barber-reel-01.mp4" poster="assets/barber-thumb-01.jpg" muted playsinline preload="metadata"></video><span class="thumb-play">▶</span><span class="reel-label"><b>01</b>Barber</span></button>
+            <button class="mini-reel video-thumb tilt-card" data-group="showcase" data-index="1" style="--poster:url('assets/supra-thumb.jpg')" data-cursor="play" aria-label="Přehrát Toyota Supra reel"><video src="assets/supra-reel.mp4" poster="assets/supra-thumb.jpg" muted playsinline preload="metadata"></video><span class="thumb-play">▶</span><span class="reel-label"><b>02</b>Toyota Supra</span></button>
+            <button class="mini-reel video-thumb tilt-card" data-group="showcase" data-index="2" style="--poster:url('assets/lexus-thumb.jpg')" data-cursor="play" aria-label="Přehrát Lexus IS reel"><video src="assets/lexus-reel.mp4" poster="assets/lexus-thumb.jpg" muted playsinline preload="metadata"></video><span class="thumb-play">▶</span><span class="reel-label"><b>03</b>Lexus IS</span></button>
+            <button class="mini-reel video-thumb tilt-card" data-group="showcase" data-index="3" style="--poster:url('assets/benz-thumb.jpg')" data-cursor="play" aria-label="Přehrát Mercedes-AMG reel"><video src="assets/benz-reel.mp4" poster="assets/benz-thumb.jpg" muted playsinline preload="metadata"></video><span class="thumb-play">▶</span><span class="reel-label"><b>04</b>Mercedes-AMG</span></button>
           </div>
         </article>
       </div>
 
-      <article class="project-card car-card reveal">
+      <article class="project-card ig-feed-card reveal">
         <div class="project-info">
-          <p class="tag">Instagram · Car content</p>
-          <h3>Car Edit Reels</h3>
+          <p class="tag">Instagram · @bmeanshotdat</p>
+          <h3>More on my Instagram</h3>
           <p>
-            Krátká auto edita pro Instagram — barva, zvuk a střih naladěné na hudbu
-            a pohyb vozu. Reel je vložený přímo z Instagramu, takže jde pustit rovnou tady.
+            Další reels, auto edita a behind the scenes najdeš na mém Instagramu.
+            Feed je vložený přímo sem — stačí scrollovat.
           </p>
-          <a class="text-link magnetic" href="https://www.instagram.com/p/Dbx0q0qN3yZ/" target="_blank" data-cursor="link">Otevřít na Instagramu →</a>
+          <a class="ig-button magnetic" href="https://www.instagram.com/bmeanshotdat/" target="_blank" rel="noopener" data-cursor="link">Follow @bmeanshotdat</a>
         </div>
 
-        <div class="ig-embed-wrap tilt-card">
-          <blockquote
-            class="instagram-media"
-            data-instgrm-permalink="https://www.instagram.com/p/Dbx0q0qN3yZ/"
-            data-instgrm-version="14"
-          ></blockquote>
+        <div class="ig-embed-wrap ig-feed-wrap">
+          <iframe
+            src="https://www.instagram.com/bmeanshotdat/embed/"
+            title="Instagram feed @bmeanshotdat"
+            loading="lazy"
+            scrolling="yes"
+            allowtransparency="true"
+          ></iframe>
         </div>
       </article>
 
@@ -300,16 +309,17 @@
 
     /* ---------- video reel modal ---------- */
     const reelGroups = {
-      barber: [
+      showcase: [
         "assets/barber-reel-01.mp4",
-        "assets/barber-reel-02.mp4",
-        "assets/roman_reel_4.mp4"
+        "assets/supra-reel.mp4",
+        "assets/lexus-reel.mp4",
+        "assets/benz-reel.mp4"
       ],
       talkinghead: [
         "assets/ContentPartner_Reel_Výběrko.mp4"
       ]
     };
-    let activeGroup = "barber";
+    let activeGroup = "showcase";
     let activeReel = 0;
     const modal = document.getElementById("videoModal");
     const modalVideo = document.getElementById("modalVideo");
@@ -318,7 +328,7 @@
     const nextBtn = document.getElementById("modalNext");
 
     function openModal(group, index) {
-      activeGroup = group || "barber";
+      activeGroup = group || "showcase";
       activeReel = index;
       modalVideo.src = reelGroups[activeGroup][activeReel];
       modal.classList.add("is-open");
@@ -502,7 +512,6 @@
     }
   </script>
 
-  <script async src="https://www.instagram.com/embed.js"></script>
 
 </body>
 </html>
